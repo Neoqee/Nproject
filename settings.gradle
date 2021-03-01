@@ -1,3 +1,4 @@
 rootProject.name='Nproject'
 include ':app'
 include ':barcodescan'
+include ':viewmodule'

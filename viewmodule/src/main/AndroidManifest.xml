@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.neoqee.viewmodule">
+
+    <application>
+        <activity android:name=".WeiqiActivity"></activity>
+        <activity android:name=".CustomViewActivity" />
+        <activity android:name=".TaijiActivity" />
+    </application>
+
+</manifest>

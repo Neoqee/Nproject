@@ -71,4 +71,5 @@ dependencies {
     implementation "androidx.camera:camera-view:1.0.0-alpha22"
 
     implementation project(":barcodescan")
+    implementation project(":viewmodule")
 }

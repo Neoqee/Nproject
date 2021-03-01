@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.neoqee.barcodescan.BarcodeScanningActivity
+import com.neoqee.viewmodule.CustomViewActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,6 +19,10 @@ class MainActivity : AppCompatActivity() {
             Intent(this,BarcodeScanningActivity::class.java).apply {
                 startActivity(this)
             }
+        }
+
+        Intent(this,CustomViewActivity::class.java).apply {
+            startActivity(this)
         }
 
     }
