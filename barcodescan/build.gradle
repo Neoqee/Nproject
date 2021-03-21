@@ -46,4 +46,6 @@ dependencies {
     implementation "androidx.camera:camera-view:1.0.0-alpha22"
     // MLkit
     implementation 'com.google.mlkit:barcode-scanning:16.1.1'
+    // 文字识别依赖
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.3'
 }

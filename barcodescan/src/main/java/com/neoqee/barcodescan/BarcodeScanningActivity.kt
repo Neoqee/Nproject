@@ -13,6 +13,7 @@ import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.TextRecognition
 import java.nio.ByteBuffer
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -64,28 +65,66 @@ class BarcodeScanningActivity : AppCompatActivity() {
                             val mediaImage = imageProxy.image
                             mediaImage?.let {
                                 val image = InputImage.fromMediaImage(it, rotationDegree)
-                                val scanner = BarcodeScanning.getClient(options)
-                                val result = scanner.process(image)
-                                    .addOnSuccessListener (cameraExecutor,{ barcodes ->
-                                        Log.i("Neoqee", "success")
-                                        for (barcode in barcodes) {
-                                            val bounds = barcode.boundingBox
-                                            val corners = barcode.cornerPoints
-                                            val rawValue = barcode.rawValue
-                                            Log.i("Neoqee", "rawValue -> ${rawValue.orEmpty()}")
+//                                val scanner = BarcodeScanning.getClient(options)
+//                                val result = scanner.process(image)
+//                                    .addOnSuccessListener (cameraExecutor,{ barcodes ->
+//                                        Log.i("Neoqee", "success")
+//                                        for (barcode in barcodes) {
+//                                            val bounds = barcode.boundingBox
+//                                            val corners = barcode.cornerPoints
+//                                            val rawValue = barcode.rawValue
+//                                            Log.i("Neoqee", "rawValue -> ${rawValue.orEmpty()}")
+//                                        }
+//                                    })
+//                                    .addOnCompleteListener(cameraExecutor,{ task ->
+//                                        Log.i("Neoqee", "complete")
+//                                        imageProxy.close()
+//                                    })
+//                                    .addOnCanceledListener (cameraExecutor,{
+//                                        Log.i("Neoqee", "cancel")
+//                                    })
+//                                    .addOnFailureListener (cameraExecutor,{ e ->
+//                                        Log.i("Neoqee", "failure")
+//                                        Log.e("Neoqee", e.toString())
+//                                        e.printStackTrace()
+//                                    })
+
+                                // 文本分析
+                                val recognizer = TextRecognition.getClient()
+                                val result1 = recognizer.process(image)
+                                    .addOnSuccessListener (cameraExecutor,{ texter ->
+                                        val resultText = texter.text
+                                        Log.i("Neoqee","resultText -> $resultText")
+                                        for (block in texter.textBlocks){
+                                            val blockText = block.text
+                                            Log.i("Neoqee","blockText -> $blockText")
+                                            val blockCornerPoints = block.cornerPoints
+                                            val blockFrame = block.boundingBox
+                                            for (line in block.lines) {
+                                                val lineText = line.text
+                                                Log.i("Neoqee","lineText -> $lineText")
+                                                val lineCornerPoints = line.cornerPoints
+                                                val lineFrame = line.boundingBox
+                                                for (element in line.elements) {
+                                                    val elementText = element.text
+                                                    Log.i("Neoqee","elementText -> $elementText")
+                                                    val elementCornerPoints = element.cornerPoints
+                                                    val elementFrame = element.boundingBox
+                                                }
+                                            }
                                         }
-                                    })
-                                    .addOnCompleteListener(cameraExecutor,{ task ->
-                                        Log.i("Neoqee", "complete")
-                                        imageProxy.close()
-                                    })
-                                    .addOnCanceledListener (cameraExecutor,{
-                                        Log.i("Neoqee", "cancel")
                                     })
                                     .addOnFailureListener (cameraExecutor,{ e ->
                                         Log.i("Neoqee", "failure")
                                         Log.e("Neoqee", e.toString())
                                         e.printStackTrace()
+                                    })
+                                    .addOnCompleteListener (cameraExecutor,{
+                                        Log.i("Neoqee", "complete")
+                                        imageProxy.close()
+                                    })
+                                    .addOnCanceledListener (cameraExecutor,{
+                                        Log.i("Neoqee", "cancel")
                                     })
                             }
                         })
