@@ -28,9 +28,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        Intent(this,CustomViewActivity::class.java).apply {
-//            startActivity(this)
-//        }
+        Intent(this,CustomViewActivity::class.java).apply {
+            startActivity(this)
+        }
 
         // 使用 Intent 过滤器
         // 从 Intent 获取代表所连接设备的 UsbDevice

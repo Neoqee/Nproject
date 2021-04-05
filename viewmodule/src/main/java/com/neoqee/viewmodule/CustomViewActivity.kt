@@ -11,17 +11,17 @@ class CustomViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom_view)
 
-        findViewById<Button>(R.id.taijiBtn).setOnClickListener {
-            Intent(this,TaijiActivity::class.java).apply {
-                startActivity(this)
-            }
-        }
-
-        findViewById<Button>(R.id.weiqiBtn).setOnClickListener {
-            Intent(this,WeiqiActivity::class.java).apply {
-                startActivity(this)
-            }
-        }
+//        findViewById<Button>(R.id.taijiBtn).setOnClickListener {
+//            Intent(this,TaijiActivity::class.java).apply {
+//                startActivity(this)
+//            }
+//        }
+//
+//        findViewById<Button>(R.id.weiqiBtn).setOnClickListener {
+//            Intent(this,WeiqiActivity::class.java).apply {
+//                startActivity(this)
+//            }
+//        }
 
     }
 }

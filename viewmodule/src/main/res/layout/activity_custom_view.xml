@@ -5,21 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CustomViewActivity">
-
-    <Button
-        android:id="@+id/taijiBtn"
+    <com.neoqee.viewmodule.CustomLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="太极"
         app:layout_constraintTop_toTopOf="parent"
         />
-    <Button
-        android:id="@+id/weiqiBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="围棋"
-        app:layout_constraintTop_toBottomOf="@+id/taijiBtn"
-        android:layout_marginTop="16dp"
-        />
+
+<!--    <Button-->
+<!--        android:id="@+id/taijiBtn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="太极"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        />-->
+<!--    <Button-->
+<!--        android:id="@+id/weiqiBtn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="围棋"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/taijiBtn"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        />-->
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
